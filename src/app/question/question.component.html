@@ -1,0 +1,8 @@
+<mat-card>
+  <mat-card-title>{{question.question}}</mat-card-title>
+  <mat-card-content>
+    <mat-chip-listbox aria-label="Fish selection" multiple id="{{question.id}}" (change)="selectionChange($event)">
+      <mat-chip-option *ngFor="let answer of question.answers">{{answer.text}}</mat-chip-option>
+    </mat-chip-listbox>
+  </mat-card-content>
+</mat-card>
