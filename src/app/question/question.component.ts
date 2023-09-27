@@ -1,6 +1,7 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Question} from "./question.model";
 import {MatChipListboxChange} from "@angular/material/chips";
+import {AnswerSelected} from "../answers/answer.model";
 
 @Component({
   selector: 'app-question',
@@ -11,17 +12,12 @@ export class QuestionComponent {
   @Input() question: Question = {
     id: 0,
     question: '',
-    answers: [],
-    correctAnswers: []
   };
 
-  selectionChange(e: MatChipListboxChange) {
-    const selectedAnswers = e.value;
-    this.question.answers.filter((answer: { selected: any; text: any; }) => {
-      answer.selected = selectedAnswers.includes(answer.text);
-    }).map((answer: { selected: any; text: any; }) => {
-      answer.text;
-      true;
-    });
+  @Output()
+  selectedEvent = new EventEmitter<AnswerSelected>();
+
+  selectionChange(selected: AnswerSelected) {
+    this.selectedEvent.emit(selected);
   }
 }

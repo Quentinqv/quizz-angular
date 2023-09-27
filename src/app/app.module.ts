@@ -12,13 +12,17 @@ import {FormsModule} from "@angular/forms";
 import { ResultsComponent } from './results/results.component';
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatButtonModule} from "@angular/material/button";
+import { QuizzComponent } from './quizz/quizz.component';
+import { AnswersComponent } from './answers/answers.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     QuestionComponent,
     HomeComponent,
-    ResultsComponent
+    ResultsComponent,
+    QuizzComponent,
+    AnswersComponent
   ],
   imports: [
     BrowserModule,

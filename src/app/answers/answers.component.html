@@ -1,0 +1,3 @@
+<mat-chip-listbox aria-label="Fish selection" multiple (change)="selectionChange($event)">
+  <mat-chip-option *ngFor="let answer of answers">{{answer}}</mat-chip-option>
+</mat-chip-listbox>

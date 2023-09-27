@@ -1,0 +1,7 @@
+<section>
+  <!--List of questions with question component-->
+  <app-question *ngFor="let question of questions" [question]="question" (selectedEvent)="selectionChange($event)"></app-question>
+
+  <!--Submit button-->
+  <button mat-raised-button color="primary" (click)="submitForm()">Valider</button>
+</section>
