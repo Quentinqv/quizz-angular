@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {Question} from "../question/question.model";
-import {QuizzService} from "../quizz/quizz.service";
 import {Router} from "@angular/router";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-home',
@@ -10,5 +10,16 @@ import {Router} from "@angular/router";
 })
 export class HomeComponent {
   questions: Question[] | undefined;
+  form = new FormGroup({
+    pseudo: new FormControl('', Validators.required),
+  });
 
+  constructor(
+    private router: Router
+  ) {
+  }
+
+  onSubmit() {
+    this.router.navigate(['quizz'], { queryParams: { pseudo: this.form.value.pseudo } });
+  }
 }

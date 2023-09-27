@@ -11,12 +11,16 @@ export class ResultsComponent {
     correctAnswers: 0,
     totalQuestions: 0
   };
+  pseudo: string = "Anonymous";
 
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
       this.result = JSON.parse(params['result']);
+      if (params['pseudo']) {
+        this.pseudo = params['pseudo'];
+      }
     });
   }
 }

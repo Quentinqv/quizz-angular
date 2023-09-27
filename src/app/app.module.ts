@@ -8,12 +8,13 @@ import { QuestionComponent } from './question/question.component';
 import {MatCardModule} from "@angular/material/card";
 import {MatChipsModule} from "@angular/material/chips";
 import { HomeComponent } from './home/home.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { ResultsComponent } from './results/results.component';
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatButtonModule} from "@angular/material/button";
 import { QuizzComponent } from './quizz/quizz.component';
 import { AnswersComponent } from './answers/answers.component';
+import {MatInputModule} from "@angular/material/input";
 
 @NgModule({
   declarations: [
@@ -32,7 +33,9 @@ import { AnswersComponent } from './answers/answers.component';
     MatChipsModule,
     FormsModule,
     MatToolbarModule,
-    MatButtonModule
+    MatButtonModule,
+    MatInputModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

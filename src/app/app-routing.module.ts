@@ -6,10 +6,9 @@ import {ResultsComponent} from "./results/results.component";
 import {QuizzComponent} from "./quizz/quizz.component";
 
 const routes: Routes = [
-  { path: 'question', component: QuestionComponent },
   { path: 'quizz', component: QuizzComponent },
   { path: 'results', component: ResultsComponent},
-  // { path: '', component: HomeComponent },
+  { path: '', component: HomeComponent },
 ];
 
 @NgModule({

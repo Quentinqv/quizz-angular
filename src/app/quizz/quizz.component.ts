@@ -1,7 +1,7 @@
 import {Component, Output} from '@angular/core';
 import {Question} from "../question/question.model";
 import {QuizzService} from "./quizz.service";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {AnswerSelected} from "../answers/answer.model";
 
 @Component({
@@ -11,15 +11,20 @@ import {AnswerSelected} from "../answers/answer.model";
 })
 export class QuizzComponent {
   questions: Question[] | undefined;
-
+  pseudo: string = "Anonymous";
   selectedAnswers: AnswerSelected[] = [];
 
   constructor(
     private quizzService: QuizzService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {
     this.quizzService.getQuestions().then((questions) => {
       this.questions = questions;
+    });
+
+    this.route.queryParams.subscribe(params => {
+      this.pseudo = params['pseudo'];
     });
   }
 
@@ -41,6 +46,7 @@ export class QuizzComponent {
     await this.quizzService.calcResults(this.selectedAnswers).then((result) => {
       this.router.navigate(['/results'], {
         queryParams: {
+          pseudo: this.pseudo,
           result: JSON.stringify({correctAnswers: result, totalQuestions: this.questions!.length})
         },
       });
